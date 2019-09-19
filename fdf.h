@@ -6,13 +6,14 @@
 /*   By: awehlbur <awehlbur@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/19 12:22:45 by awehlbur       #+#    #+#                */
-/*   Updated: 2019/09/19 14:02:24 by awehlbur      ########   odam.nl         */
+/*   Updated: 2019/09/19 14:42:52 by awehlbur      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 # include "./includes/libft/includes/libft.h"
+# include "./includes/minilibx/mlx.h"
 
 # define X 1300
 # define Y 1300
@@ -65,6 +66,7 @@ typedef struct			s_map
 	int					start_y;
 	int					color1[2];
 	int					color2[2];
+	int					heigth;
 	double				alpha;
 	double				beta;
 	double				gamma;

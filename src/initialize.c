@@ -6,7 +6,7 @@
 /*   By: awehlbur <awehlbur@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/19 13:35:19 by awehlbur       #+#    #+#                */
-/*   Updated: 2019/09/19 14:02:10 by awehlbur      ########   odam.nl         */
+/*   Updated: 2019/09/19 14:43:06 by awehlbur      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void			image_init(t_map *params)
 		memdel_and_exit(params);
 	}
 	params->img = new;
-	clear_image(params);
+	// clear_image(params);
 }
 
 t_map			*init(t_list *start, char *title)
@@ -51,5 +51,8 @@ t_map			*init(t_list *start, char *title)
 	params->map_start = start;
 	params->max = (t_max*)ft_memalloc(sizeof(t_max));
 	ft_bzero(params->max, sizeof(t_max));
+	get_grid_start_size(params);
+	params->heigth = 1;
+	get_color_scheme(params, 0);
 	return (params);
 }
