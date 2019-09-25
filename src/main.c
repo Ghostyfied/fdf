@@ -6,11 +6,13 @@
 /*   By: awehlbur <awehlbur@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/19 12:22:32 by awehlbur       #+#    #+#                */
-/*   Updated: 2019/09/19 14:23:46 by awehlbur      ########   odam.nl         */
+/*   Updated: 2019/09/25 17:34:57 by awehlbur      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
+
+
 
 int				main(int argc, char **argv)
 {
@@ -26,16 +28,10 @@ int				main(int argc, char **argv)
 		if (!check_input(&start))
 			ft_error("Not a valid map!");
 		params = init(start, argv[1]);
-
-// testing:
-	// int			i = 0;
-	// while (start)
-	// {
-		// ft_putnbr(start->content);
-		// ft_putnbr(i++);
-		// start = start->next;
-	// }
-
-	return (0);
+		draw_map(params);
+		// mlx_key_hook(params->window, my_key_funct, params);
+		// mlx_expose_hook(params->window, my_expose_funct, params);
+		// mlx_loop(params->mlx);
+		return (0);
 	}
 }

@@ -6,11 +6,39 @@
 /*   By: awehlbur <awehlbur@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/19 13:35:19 by awehlbur       #+#    #+#                */
-/*   Updated: 2019/09/19 14:43:06 by awehlbur      ########   odam.nl         */
+/*   Updated: 2019/09/25 15:42:04 by awehlbur      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
+
+static void		get_grid_start_size(t_map *params)
+{
+	int			x;
+	int			y;
+	t_list		*drone;
+
+	y = 0;
+	x = params->map_start->content_size / sizeof(int);
+	drone = params->map_start;
+	while (drone)
+	{
+		drone = drone->next;
+		y++;
+	}
+	params->grid_size = 1100 / (int)sqrt(x * x + y * y);
+}
+
+static void		clear_image(t_map *params)
+{
+	t_img		*img;
+
+	img = params->img;
+	ft_bzero(img, sizeof(t_img));
+	img->ptr = mlx_new_image(params->mlx, X, Y);
+	img->pixels = (int*)mlx_get_data_addr(img->ptr, &img->bpp, 
+												&img->size_line, &img->endian);
+}
 
 static void		init_colors(t_map *params)
 {
@@ -30,7 +58,7 @@ void			image_init(t_map *params)
 		memdel_and_exit(params);
 	}
 	params->img = new;
-	// clear_image(params);
+	clear_image(params);
 }
 
 t_map			*init(t_list *start, char *title)

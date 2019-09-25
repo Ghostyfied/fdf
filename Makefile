@@ -15,7 +15,8 @@ INC = $(addprefix -I,$(INC_PATH))
 INC_MLX = $(addprefix -I, $(MLX_PATH))
 INC_LFT = $(addprefix -I, $(addprefix $(LIBFT_PATH), $(INC_PATH)))
 
-SRC_NAME = main.c extras.c initialize.c read_and_check_input.c
+SRC_NAME = 	main.c extras.c initialize.c read_and_check_input.c get_colours.c \
+			draw_map1.c get_coor.c
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
 all: $(NAME)
@@ -23,7 +24,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@make -C $(LIBFT_PATH)
 	@make -C $(MLX_PATH)
-	@$(CC) -o $(NAME) $(OBJ) -L$(LIBFT_PATH) -lft -L$(MLX_PATH) -lmlx $(GRAPHICS_FLAGS)
+	@$(CC) -g -o $(NAME) $(OBJ) -L$(LIBFT_PATH) -lft -L$(MLX_PATH) -lmlx $(GRAPHICS_FLAGS)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
